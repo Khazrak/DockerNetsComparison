@@ -1,0 +1,18 @@
+# qperf Instructions
+
+qperf <server-ip-or-hostname> <test> 
+
+To run a TCP bandwidth and latency test:
+    qperf myserver tcp_bw tcp_lat 
+To run a SDP bandwidth test for 10 seconds:
+    qperf myserver -t 10 sdp_bw 
+To run a UDP latency test and then cause the server to terminate:
+    qperf myserver udp_lat quit 
+To measure the RDMA UD latency and bandwidth:
+    qperf myserver ud_lat ud_bw 
+To measure RDMA UC bi-directional bandwidth:
+    qperf myserver rc_bi_bw 
+To get a range of TCP latencies with a message size from 1 to 64K
+    qperf myserver -oo msg_size:1:64K:*2 -vu tcp_lat
+
+qperf 21.21.21.7 tcp_bw tcp_lat
